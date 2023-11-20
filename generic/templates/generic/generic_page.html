@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags%}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -9,7 +9,8 @@
 {% endblock extra_css %}
 
 {% block content %}
-
+  {% image page.banner_image fill-1400x500 as img %}
+  <img src="{{img.url}}" alt="{{img.alt}}">
   <h1>Hello Generic page!!</h1>
   <h3>{{page.banner_title}}</h3>
   <p>

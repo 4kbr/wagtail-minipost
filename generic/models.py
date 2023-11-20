@@ -9,10 +9,17 @@ class GenericPage(Page):
     max_length=100,
     default='Welcome to my generic page',
   )
-
   introduction = models.TextField(blank=True)
+  banner_image = models.ForeignKey(
+    'wagtailimages.Image',
+    null=True,
+    blank=False,
+    on_delete=models.SET_NULL,
+    related_name='+',
+  )
 
   content_panels = Page.content_panels + [
     FieldPanel("banner_title"),
     FieldPanel("introduction"),
+    FieldPanel("banner_image"),
   ]
