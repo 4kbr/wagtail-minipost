@@ -37,8 +37,12 @@
         <main>
             {% block content %}{% endblock %}
         </main>
-        <footer>
-            Custom Footer
+        <footer class="efooter">
+          {% if settings.site_engines.SocialMediaSettings.instagram %}
+            <a href="{{settings.site_engines.SocialMediaSettings.instagram}}">
+              Follow me on instagram!!
+            </a>  
+          {% endif %}
         </footer>
 
 
