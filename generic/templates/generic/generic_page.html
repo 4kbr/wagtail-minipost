@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailimages_tags%}
+{% load static wagtailimages_tags wagtailcore_tags%}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -10,8 +10,7 @@
 
 {% block content %}
   {% image page.banner_image fill-1400x500 as img %}
-  <img src="{{img.url}}" alt="{{img.alt}}">
-  <h1>Hello Generic page!!</h1>
+  <img src="{{img.url}}" alt="{{img.alt}}" style="width:100%; height:auto;">
   <h3>{{page.banner_title}}</h3>
   <p>
     {{page.introduction}}
@@ -26,5 +25,7 @@
       </a>
     {% endif %}  
   </p>
+
+  {% include_block page.body %}
 
 {% endblock content %}

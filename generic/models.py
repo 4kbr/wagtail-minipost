@@ -3,6 +3,9 @@ from django.db import models
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.fields import StreamField
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail import blocks
 
 
 
@@ -28,12 +31,20 @@ class GenericPage(Page):
     on_delete=models.SET_NULL,
     related_name='+',
   )
+  body = StreamField([
+    # ('name', blocks.SomthingBloc())
+    ('heading',blocks.CharBlock(template='heading_block.html')),
+    ('image',ImageChooserBlock()),
+    ('paragraph',blocks.RichTextBlock()),
+  ], use_json_field=True,null = True)
 
   content_panels = Page.content_panels + [
     FieldPanel("banner_title"),
     FieldPanel("introduction"),
     FieldPanel("banner_image"),
     FieldPanel("author"),
+    FieldPanel("body"),
+    # Panel in here
   ]
 
 @register_snippet

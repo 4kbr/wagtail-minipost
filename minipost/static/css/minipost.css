@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+main,
+footer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.block-heading {
+  font-size: 35px;
+  margin-top: 30px;
+}
+
+.block-image {
+  width: 100%;
+  height: auto;
+}
